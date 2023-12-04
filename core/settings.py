@@ -143,4 +143,4 @@ REST_FRAMEWORK = {
 # cors
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "https://prounity.uz"]
 
-FORCE_SCRIPT_NAME = "/email"
+# FORCE_SCRIPT_NAME = "/email"

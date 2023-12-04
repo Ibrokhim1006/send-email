@@ -10,12 +10,13 @@ class CheckEmailCode(APIView):
         phone = request.data["phone"]
         purpose = request.data["purpose"]
         description = request.data["description"]
+        em = "Ibroxim.2001@mail.ru"
 
         send_mail(
             "prountiy.uz",
             f"Name: {name}, email: {email}, phone: {phone}, purpose: {purpose}, description: {description}",
             "istamovibrohim8@gmail.com",
-            [email],
+            [em],
             fail_silently=False,
         )
         return Response({"message": "Send message"})
