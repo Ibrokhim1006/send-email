@@ -27,12 +27,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Django DRF
     "rest_framework",
+    'corsheaders',
     "send_email",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -127,19 +129,15 @@ EMAIL_USE_TLS = True
 EMAIL_TIMEOUT = 300  # in seconds
 DEFAULT_FROM_EMAIL = "unipointsoftwaredevelopment@gmail.com"
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
-# Rest fremwork settings
 REST_FRAMEWORK = {
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'rest_framework.renderers.JSONRenderer',
-    # )
-    "DEFAULT_PARSER_CLASSES": (
-        "rest_framework.parsers.JSONParser",
-        "rest_framework.parsers.FormParser",
-        "rest_framework.parsers.MultiPartParser",
-        "rest_framework.parsers.FileUploadParser",
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
+    'NON_FIELD_ERRORS_KEY': 'errors',
 }
 
 # cors
